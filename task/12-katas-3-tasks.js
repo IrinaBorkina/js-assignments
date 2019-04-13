@@ -45,7 +45,10 @@ function findStringInSnakingPuzzle(puzzle, searchStr) {
  *    'abc' => 'abc','acb','bac','bca','cab','cba'
  */
 function* getPermutations(chars) {
-    throw new Error('Not implemented');
+
+    if (chars.length == 1) return chars;
+    if (chars.length == 2) return str != str[1] + str[0] ? [str, str[1] + str[0]] : [str];
+
 }
 
 
@@ -65,7 +68,16 @@ function* getPermutations(chars) {
  *    [ 1, 6, 5, 10, 8, 7 ] => 18  (buy at 1,6,5 and sell all at 10)
  */
 function getMostProfitFromStockQuotes(quotes) {
-    throw new Error('Not implemented');
+    let sum = 0;
+    while (quotes.length) {
+        let maxNum = Math.max.apply(null, quotes);
+        let indMax = quotes.lastIndexOf(maxNum);
+        for (let i = 0; i < indMax; i++) {
+            sum += quotes[indMax] - quotes[i];
+        }
+        quotes = quotes.slice(indMax + 1);
+    }
+    return sum;
 }
 
 
@@ -84,20 +96,20 @@ function getMostProfitFromStockQuotes(quotes) {
  * 
  */
 function UrlShortener() {
-    this.urlAllowedChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"+
-                           "abcdefghijklmnopqrstuvwxyz"+
-                           "0123456789-_.~!*'();:@&=+$,/?#[]";
+    this.urlAllowedChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+        "abcdefghijklmnopqrstuvwxyz" +
+        "0123456789-_.~!*'();:@&=+$,/?#[]";
 }
 
 UrlShortener.prototype = {
 
-    encode: function(url) {
+    encode: function (url) {
         throw new Error('Not implemented');
     },
-    
-    decode: function(code) {
+
+    decode: function (code) {
         throw new Error('Not implemented');
-    } 
+    }
 }
 
 
